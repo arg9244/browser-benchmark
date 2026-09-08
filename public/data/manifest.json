@@ -1,0 +1,13 @@
+{
+  "browsers": [
+    "brave-origin",
+    "chromium",
+    "firefox-esr",
+    "firefox-pure",
+    "firefox-wayland-cachy-hg",
+    "floorp",
+    "vivaldi",
+    "waterfox",
+    "zen"
+  ]
+}
