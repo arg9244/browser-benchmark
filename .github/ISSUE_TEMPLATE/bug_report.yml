@@ -1,0 +1,68 @@
+name: Bug Report
+description: Create a report to help us improve
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: ''
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this bug report! Please provide as much detail as possible so we can investigate and fix the issue.
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      value: |
+        What happened?
+      placeholder: Tell us what you expected and what actually happened.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: To reproduce
+      description: Steps to reproduce the behavior.
+      value: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+      placeholder: Provide detailed steps to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen.
+      placeholder: Tell us what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual behavior
+      description: What actually happened instead.
+      placeholder: Tell us what actually happened.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+      validations:
+        required: false
+  - type: textarea
+    attributes:
+      label: Environment
+      description: Please complete the following information.
+      value: |
+        - OS: [e.g. macOS, Windows, Linux]
+        - Browser: [e.g. Chrome, Firefox, Safari]
+        - Browser version: [e.g. 120.0.0.0]
+        - Device: [e.g. Desktop, Mobile]
+      placeholder: Tell us about your environment.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+      validations:
+        required: false

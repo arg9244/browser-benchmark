@@ -1,0 +1,75 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.1'
+
+      - name: Install dependencies
+        run: |
+          if [ -f bun.lockb ] || [ -f bun.lock ]; then
+            bun install
+          else
+            npm install
+          fi
+
+      - name: Build with Vite
+        run: |
+          if [ -f bun.lockb ] || [ -f bun.lock ]; then
+            bun run build
+          else
+            npm run build
+          fi
+        env:
+          # You can add environment variables here if needed
+          NODE_ENV: production
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+        uses: actions/deploy-pages@v4
